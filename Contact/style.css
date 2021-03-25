@@ -1,0 +1,373 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+body {
+  background-image: linear-gradient(to right, #69d4d0, #213570);
+  overflow-x: hidden;
+}
+.circle {
+  position: relative;
+}
+.cir1 {
+  width: 35rem;
+  height: 35rem;
+  border-radius: 50%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), #213570);
+  position: absolute;
+  margin-left: -10vw;
+  margin-top: -15vw;
+}
+.cir2 {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: linear-gradient(to right, #69d4d0, rgba(255, 255, 255, 0.1));
+  position: absolute;
+  margin-left: 80%;
+  margin-top: 30%;
+}
+.cir3 {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1),
+    rgba(255, 255, 255, 0.3)
+  );
+  position: absolute;
+  margin-left: -10vw;
+  margin-top: 25%;
+}
+
+.cir4 {
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  background: linear-gradient(to right, #72a0c1, #002d62);
+  position: absolute;
+  margin-left: 60%;
+}
+.form-info-login-admin {
+  z-index: 1;
+  position: absolute;
+  background-color: #fff;
+  width: 70%;
+  height: 70vh;
+  margin-left: 14%;
+  margin-top: 7%;
+}
+.map-email-cont {
+  display: grid;
+  grid-template-columns: repeat(3, 50%);
+  column-gap: 10%;
+}
+.map-title-contact img {
+  width: 30vw;
+  height: 30vh;
+  position: absolute;
+  left: 5%;
+  top: 30%;
+}
+.map-title-contact h1 {
+  font-family: cursive;
+  position: absolute;
+  left: 20%;
+  top: 5%;
+}
+.map-title-contact h3 {
+  font-family: Arial Narrow, sans-serif;
+  font-size: 15px;
+  position: absolute;
+  left: 8%;
+  top: 15%;
+  font-size: larger;
+  color: rgb(112, 111, 111);
+}
+.font {
+  color: rgb(112, 111, 111);
+}
+.tit-cont {
+  font-family: initial;
+  font-weight: bolder;
+  font-size: larger;
+}
+.map-email-cont {
+  display: grid;
+  grid-template-columns: repeat(3, 25%);
+  column-gap: 5%;
+  z-index: 1;
+  margin-left: 10%;
+  margin-top: 10%;
+
+  position: absolute;
+}
+.contact-admin {
+  background: linear-gradient(to right, #69d4d0, #213570);
+  width: 30vw;
+  height: 70vh;
+  position: absolute;
+  left: 57.2%;
+  overflow: hidden;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -1%;
+  left: 22%;
+}
+.contact-tit1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2.2vw;
+  font-style: unset;
+  padding: 10px;
+}
+.contact-tit2 {
+  font-size: 1.3vw;
+  font-family: cursive;
+  padding: 1vw;
+  margin-left: -1vw;
+}
+.contact-admin label {
+  font-style: initial;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 1px;
+  font-weight: bolder;
+}
+.contact-admin input {
+  padding: 10px;
+  border: 2px solid;
+  border-color: #213570;
+  border-radius: 30px;
+  background: transparent;
+}
+.input-info {
+  height: 10vh;
+}
+.butt-regi {
+  padding: 10px;
+  cursor: pointer;
+  left: 10px;
+  border: 2px solid #213570;
+  border-radius: 30px;
+  background: linear-gradient(to right, #69d4d0, #213570);
+  font-family: cursive;
+  font-weight: bolder;
+}
+.butt {
+  width: 5vw;
+  background: transparent;
+  border: 2px solid #fff;
+
+  font-family: cursive;
+  font-weight: bolder;
+  cursor: pointer;
+  color: #fff;
+}
+.butt-slide {
+  position: absolute;
+  left: 19.5vw;
+  display: flex;
+  top: 0.5vw;
+}
+
+#admin {
+  position: absolute;
+  left: 600px;
+  top: 7%;
+}
+.admin label {
+  padding: 20px;
+}
+.butt-log {
+  padding: 10px;
+  cursor: pointer;
+  left: 10px;
+  border: 2px solid #213570;
+  border-radius: 30px;
+  background: linear-gradient(to right, #69d4d0, #213570);
+  font-family: cursive;
+  font-weight: bolder;
+  width: 10vw;
+}
+.pos-admin {
+  position: absolute;
+  top: 10vw;
+}
+.admin-inp {
+  padding: 50px;
+}
+i {
+  cursor: pointer;
+}
+#franinfo {
+  display: none;
+}
+#maroinfo {
+  display: none;
+}
+#canainfo {
+  display: none;
+}
+.france {
+  cursor: pointer;
+}
+.canada {
+  position: absolute;
+  left: 200px;
+  cursor: pointer;
+}
+.maroc {
+  position: absolute;
+  left: 400px;
+  cursor: pointer;
+}
+span {
+  font-size: x-small;
+}
+.padd {
+  padding: 25px;
+}
+.all {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, -50px);
+  width: 90%;
+  border: 5px solid hsl(0, 0%, 40%);
+  padding: 5px;
+  background: hsl(0, 0%, 20%);
+  outline: 5px solid hsl(0, 0%, 60%);
+  box-shadow: 0 0 0 10px hsl(0, 0%, 80%), 0 0 0 15px hsl(0, 0%, 90%);
+}
+
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+
+  z-index: 2;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #232323;
+
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: rgb(61, 72, 170);
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 3; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+   * Just a quick hamburger
+   */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: black;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+   * Transform all the slices of hamburger
+   * into a crossmark.
+   */
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+   * But let's hide the middle one.
+   */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+   * Ohyeah and the last one should go the other direction
+   */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+   * Make this absolute positioned
+   * at the top left of the screen
+   */
+#menu {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+   * And let's slide it in from the left
+   */
+#menuToggle input:checked ~ ul {
+  transform: none;
+}

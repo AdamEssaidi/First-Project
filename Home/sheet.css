@@ -1,0 +1,635 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+.slide::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.slide:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.slide::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0 0 0 0;
+  background: hsl(200 100% 80%);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.slide {
+  position: relative;
+  font-size: 3rem;
+}
+
+/*_______________________________________________________________________________*/
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #232323;
+
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: rgb(61, 72, 170);
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: black;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul {
+  transform: none;
+}
+/*_______________________________________________________________________________*/
+
+body {
+  background-image: url("../pics/space.png");
+  background-position: right;
+  height: 80vh;
+  position: relative;
+  background-repeat: no-repeat;
+  color: #4a4c4b;
+}
+.first_vue {
+  width: 100%;
+  height: 90vh;
+}
+/* .home_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1vh;
+}
+.nav-links {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  width: 50%;
+  height: 100%;
+  margin-left: auto;
+  align-items: center;
+}
+.nav-links ul {
+  list-style: none;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+}
+.home_bar ul ul {
+  display: none;
+}
+.home_bar ul li:hover > ul {
+  display: block;
+}
+
+.landing {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing h1 {
+  margin: 100px;
+  font-size: 50px;
+  color: #ae5fce;
+}
+
+@media screen and (max-width: 768px) {
+  .line {
+    width: 30px;
+    height: 3px;
+    background: #f2f8f6;
+    margin: 5px;
+  }
+  .home_bar {
+    position: relative;
+  }
+
+  .hamburger {
+    position: absolute;
+    cursor: pointer;
+    right: 5%;
+    top: 50%;
+    transform: translate(-5%, -50%);
+    z-index: 7;
+  }
+
+  .nav-links {
+    z-index: 6;
+    position: fixed;
+    background: #5b78c7;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(100px at 90% -10%);
+    -webkit-clip-path: circle(100px at 90% -10%);
+    transition: all 1s ease-out;
+    pointer-events: none;
+  }
+  .nav-links.open {
+    clip-path: circle(1000px at 90% -10%);
+    -webkit-clip-path: circle(1000px at 90% -10%);
+    pointer-events: all;
+  }
+  .landing {
+    flex-direction: column;
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .nav-links li a {
+    font-size: 25px;
+  }
+  .nav-links li:nth-child(1) {
+    transition: all 0.5s ease 0.2s;
+  }
+  .nav-links li:nth-child(2) {
+    transition: all 0.5s ease 0.4s;
+  }
+  .nav-links li:nth-child(3) {
+    transition: all 0.5s ease 0.6s;
+  }
+  .nav-links li:nth-child(4) {
+    transition: all 0.5s ease 0.8s;
+  }
+  li.fade {
+    opacity: 1;
+  }
+} */
+
+.about_side {
+  position: absolute;
+  width: 35%;
+  height: 20vh;
+  margin: 10vw;
+  text-align: center;
+  z-index: 0;
+}
+.btn_about {
+  border: #4a4c4b solid 2px;
+  background-color: #83d674;
+  padding: 1vh 3vw;
+  border-radius: 30px;
+}
+#startman {
+  width: 40%;
+  position: absolute;
+  left: 1vw;
+}
+.skills_side {
+  /* background-image: url(./pics/undraw_startman1_h7l9.svg); */
+  height: 80vh;
+  position: relative;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.cards {
+  margin-left: 40%;
+}
+.card {
+  width: 15vw;
+  height: 15vw;
+  border: #4a4c4b solid 2px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+}
+.card1 {
+  left: 47vw;
+  top: 15vh;
+}
+.card2 {
+  left: 43vw;
+  top: 50vh;
+}
+.card3 {
+  left: 30vw;
+  top: 80vh;
+}
+.card4 {
+  left: 10vw;
+  top: 90vh;
+}
+.card5 {
+  left: 65vw;
+  top: 40vh;
+}
+.card6 {
+  left: 53vw;
+  top: 84vh;
+}
+.card7 {
+  left: 80vw;
+  top: 8vh;
+}
+.card8 {
+  left: 75vw;
+  top: 78vh;
+}
+.skills_side .cards .card img {
+  width: 40%;
+}
+.space {
+  width: 100%;
+  height: 50vh;
+}
+
+.client_side {
+  width: 100%;
+  height: 90vh;
+  text-align: center;
+  background-image: url("../pics/Vector.png");
+  background-position: center;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+.client_side .clients span {
+  display: flex;
+  flex-direction: column;
+  font-size: 4vw;
+  font-weight: 700;
+}
+/*----------------------contact------------------*/
+/* .contact_side {
+  background-color: #4a4c4b;
+  height: 40vh;
+  width: 100%;
+  display: grid;
+  place-items: center center;
+  font-family: "Poppins", sans-serif;
+  color: #83d674;
+} */
+/* .cardsc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 20px;
+  grid-gap: 40px;
+}
+.cardc {
+  background-color: #4a4c4b;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
+}
+.container {
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.contact_side .cardsc .cardc .container img {
+  width: 100%;
+  display: block;
+  border-radius: 20px 20px 0 0;
+}
+.container:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px 20px 0 0;
+  opacity: 0.7;
+}
+.cardc1 > .container:after {
+  background-image: linear-gradient(135deg, #0100ec, #fb36f4);
+}
+.cardc2 > .container:after {
+  background-image: linear-gradient(135deg, #2bdce3, #42ffdb);
+}
+.cardc3 > .container:after {
+  background-image: linear-gradient(135deg, #ffab1d, #f8501c);
+}
+.details {
+  padding: 20px 10px;
+}
+.details > h3 {
+  color: #f2f8f6;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 10px 0 15px 0;
+}
+.details > p {
+  color: #a0a0a0;
+  font-size: 15px;
+  line-height: 30px;
+  font-weight: 400;
+} */
+#wrapper {
+  position: relative;
+  overflow: hidden;
+  background: #182431;
+}
+
+#wrapper.active {
+  background: url("https://res.cloudinary.com/dtvy1jqj0/image/upload/v1562848805/ieDeath/sunset.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* === Text & Button === */
+footer {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background: #2c3e50;
+  display: block;
+}
+
+footer.active {
+  display: none;
+}
+
+footer h2 {
+  color: #fff;
+  font-family: "Special Elite", cursive;
+  font-size: 2em;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+
+footer .ie {
+  color: #7897fd;
+}
+
+#ieImg {
+  width: 130px;
+  opacity: 0.5;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  user-select: none;
+}
+
+#ieImg.active {
+  opacity: 0;
+}
+
+/* I took the button design from: https://codepen.io/kennethweber/pen/loHtG */
+.btn {
+  height: 130px;
+  width: 300px;
+  transform: translateX(-50%) scale(0.7);
+  position: absolute;
+  bottom: 46px;
+  left: 50%;
+}
+
+.btn div {
+  position: absolute;
+  transition: all 0.2s;
+}
+
+.btn #floor {
+  height: 50px;
+  width: 300px;
+  background: #506e8d;
+  border-radius: 50%;
+  margin-top: 80px;
+}
+
+.btn #top {
+  background: #e74c3c;
+  height: 40px;
+  width: 250px;
+  border-radius: 50%;
+  z-index: 3;
+  margin-left: 25px;
+}
+
+.btn #bottom {
+  background: #c0392b;
+  height: 40px;
+  width: 250px;
+  border-radius: 50%;
+  margin-top: 80px;
+  margin-left: 25px;
+  z-index: 2;
+}
+
+.btn #body {
+  background: #c0392b;
+  width: 250px;
+  border-radius: 0;
+  margin-left: 25px;
+  height: 80px;
+  margin-top: 20px;
+  z-index: 2;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:hover #floor {
+  background: #95a5a6;
+}
+
+.btn:hover #top {
+  background: #e35e50;
+}
+
+.btn .top-click {
+  margin-top: 40px;
+}
+
+.btn .body-click {
+  height: 40px !important;
+  margin-top: 60px !important;
+}
+
+/* === Red and Blue Light === */
+
+/* === Handwriting effect === */
+#svg {
+  width: 100%;
+  height: 40vh;
+  display: block;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+#thank,
+#y,
+#ou {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 14px;
+  opacity: 0;
+}
+
+#thank {
+  stroke: #182838;
+  stroke-dasharray: 2244;
+  stroke-dashoffset: 2244;
+}
+
+#thank.active {
+  animation: handwritingAnimation 3s 1.2s linear forwards;
+}
+
+#y {
+  stroke: #ff2d2d;
+  stroke-dasharray: 767;
+  stroke-dashoffset: 767;
+}
+
+#y.active {
+  animation: handwritingAnimation 0.5s 4.2s linear forwards;
+}
+
+#ou {
+  stroke: #182838;
+  stroke-dasharray: 504;
+  stroke-dashoffset: 504;
+}
+
+#ou.active {
+  animation: handwritingAnimation 1s 4.7s linear forwards;
+}
+
+@keyframes handwritingAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}

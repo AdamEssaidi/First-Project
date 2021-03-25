@@ -1,0 +1,276 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+#menuToggle {
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a {
+  text-decoration: none;
+  color: #232323;
+
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover {
+  color: rgb(61, 72, 170);
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+
+  background: black;
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+
+#menuToggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul {
+  transform: none;
+}
+
+#bg_planet {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: -9;
+}
+.all1 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: 90%;
+  height: 70vh;
+  border: 5px solid hsl(0, 0%, 40%);
+  padding: 5px;
+  background: hsl(0, 0%, 20%);
+  outline: 5px solid hsl(0, 0%, 60%);
+  box-shadow: 0 0 0 10px hsl(0, 0%, 80%), 0 0 0 15px hsl(0, 0%, 90%);
+}
+.all2 {
+  position: absolute;
+  top: 520px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90%;
+  height: 190vh;
+  border: 5px solid hsl(0, 0%, 40%);
+  padding: 5px;
+  background: hsl(0, 0%, 20%);
+  outline: 5px solid hsl(0, 0%, 60%);
+  box-shadow: 0 0 0 10px hsl(0, 0%, 80%), 0 0 0 15px hsl(0, 0%, 90%);
+}
+.all3 {
+  position: absolute;
+  top: 1280px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90%;
+  border: 5px solid hsl(0, 0%, 40%);
+  padding: 5px;
+  background: hsl(0, 0%, 20%);
+  outline: 5px solid hsl(0, 0%, 60%);
+  box-shadow: 0 0 0 10px hsl(0, 0%, 80%), 0 0 0 15px hsl(0, 0%, 90%);
+}
+/* .about_us_side {
+  z-index: ;
+} */
+.title {
+  text-align: center;
+  color: aliceblue;
+}
+.para {
+  color: aliceblue;
+  padding: 2%;
+}
+
+.second_open_side {
+  display: grid;
+  place-items: center center;
+  font-family: "Poppins", sans-serif;
+}
+.cardsc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  padding: 20px;
+  grid-gap: 40px;
+}
+.cardc {
+  background-color: #4a4c4b;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
+}
+.container {
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.event_side .cardsc .cardc .container img {
+  width: 100%;
+  display: block;
+  border-radius: 20px 20px 0 0;
+}
+.container:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px 20px 0 0;
+  opacity: 0.7;
+}
+.cardc1 > .container:after {
+  background-image: linear-gradient(135deg, #0100ec, #fb36f4);
+}
+.cardc2 > .container:after {
+  background-image: linear-gradient(135deg, #2bdce3, #42ffdb);
+}
+.cardc3 > .container:after {
+  background-image: linear-gradient(135deg, #ffab1d, #f8501c);
+}
+.details {
+  padding: 20px 10px;
+}
+.details > h3 {
+  color: #f2f8f6;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 10px 0 15px 0;
+}
+.details > p {
+  color: #a0a0a0;
+  font-size: 15px;
+  line-height: 30px;
+  font-weight: 400;
+}
+
+.title::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.title:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.title::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  inset: 0 0 0 0;
+  background: hsl(200 100% 80%);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.title {
+  position: relative;
+  font-size: 1rem;
+}
